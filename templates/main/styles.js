@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#fff",
     elevation: 10,
+    marginBottom: 15,
   },
   animationTitle: {
     fontFamily: "montserrat-bold",
