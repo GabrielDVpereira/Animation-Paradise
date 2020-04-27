@@ -6,8 +6,10 @@ This is a repository where I'll try to create and save tamplates of useful anima
 
 [Code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/image-blur)
 
-![gif](https://github.com/GabrielDVpereira/Animation-Paradise/blob/master/gifs/imageBlur.gif?raw=true)
+<img src="https://github.com/GabrielDVpereira/Animation-Paradise/raw/master/gifs/imageBlur.gif" alt="gif" style="width:200px;">
 
 ## Animation modal
 
 [Code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/Modal1)
+
+<img src="gifs/modal (1).gif" alt="gif" style="width:200px;">
