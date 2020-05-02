@@ -21,7 +21,6 @@ export default function Main({ navigation }) {
         <FlatList
           data={components}
           keyExtractor={(item) => {
-            console.log(item);
             return item.name;
           }}
           renderItem={({ item: componet }) => (
