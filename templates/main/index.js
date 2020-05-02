@@ -20,7 +20,10 @@ export default function Main({ navigation }) {
       <View style={styles.animationList}>
         <FlatList
           data={components}
-          keyExtractor={(item) => item.name}
+          keyExtractor={(item) => {
+            console.log(item);
+            return item.name;
+          }}
           renderItem={({ item: componet }) => (
             <TouchableOpacity
               key={componet.name}
