@@ -10,7 +10,6 @@ export default function FirstCard({
   cardRotation,
   image,
 }) {
-  console.log("Card moviment first card", cardMoviment);
   return (
     <Animated.View
       {...panGesture.panHandlers}
