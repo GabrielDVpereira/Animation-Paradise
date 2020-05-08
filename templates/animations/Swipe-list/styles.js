@@ -14,13 +14,11 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   listContainer: {
-    bottom: 0,
     position: "absolute",
     width: "100%",
   },
   listContent: {
     backgroundColor: "#eeee",
-    height: "100%",
   },
   listHeader: {
     height: 40,
@@ -29,6 +27,12 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     alignItems: "center",
     justifyContent: "center",
+  },
+  text: {
+    alignSelf: "center",
+    marginTop: 200,
+    fontFamily: "montserrat-medium",
+    fontSize: 16,
   },
 });
 

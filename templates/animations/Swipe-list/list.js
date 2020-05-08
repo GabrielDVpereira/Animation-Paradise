@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   View,
   Animated,
   FlatList,
   Dimensions,
-  TouchableOpacity,
   PanResponder,
 } from "react-native";
 import cardData from "./cardData.json";
@@ -12,60 +11,79 @@ import Card from "./card";
 import styles from "./styles.js";
 import { FontAwesome } from "@expo/vector-icons";
 
-const SCREEN_HEIGHT = Dimensions.get("screen").height;
-const top = new Animated.Value(200);
-const listTranslation = new Animated.Value(0);
+const SCREEN_HEIGHT = Dimensions.get("window").height;
+const height = new Animated.Value(0);
 
 export default function List() {
   const [icon, setIcon] = useState("caret-up");
   const [listVisible, setListVisible] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: (evt, gestureState) => true,
     onPanResponderMove: (event, gestureState) => {
-      listTranslation.setValue(gestureState.dy);
+      if (gestureState.moveY > 150 && gestureState.moveY < SCREEN_HEIGHT)
+        height.setValue(SCREEN_HEIGHT - gestureState.moveY);
     },
     onPanResponderRelease: (event, gestureState) => {
-      setListVisible(!listVisible);
+      const panHorizontalGesture = SCREEN_HEIGHT - gestureState.moveY;
+      if (panHorizontalGesture < 300 && gestureState.dy > 0) {
+        //scroll to close
+        setListVisible(false);
+        setShouldAnimate(true);
+      } else if (panHorizontalGesture < 300 && gestureState.dy < 0) {
+        //scroll to open
+        setListVisible(true);
+        setShouldAnimate(true);
+      } else if (gestureState.dy == 0) {
+        setListVisible(!listVisible);
+        setShouldAnimate(true);
+      } else if (panHorizontalGesture > 300 && gestureState.dy < 0) {
+        setListVisible(true);
+      }
     },
   });
 
   useEffect(() => {
-    toggleList();
+    if (listVisible) {
+      setIcon("caret-down");
+    } else {
+      setIcon("caret-up");
+    }
+    if (shouldAnimate) {
+      toggleList();
+    }
   }, [listVisible]);
 
   function toggleList() {
-    setIcon("caret-down");
     if (listVisible) {
-      Animated.spring(top, {
-        toValue: 400,
-      }).start();
+      Animated.spring(height, {
+        toValue: 300,
+      }).start(() => {
+        setShouldAnimate(false);
+      });
     } else {
-      setIcon("caret-up");
-      Animated.timing(top, {
+      Animated.timing(height, {
         toValue: 0,
         duration: 300,
-      }).start();
+      }).start(() => {
+        setShouldAnimate(false);
+      });
     }
   }
   return (
-    <Animated.View
-      style={[
-        styles.listContainer,
-        { top, transform: [{ translateY: listTranslation }] },
-      ]}
-    >
+    <View style={[styles.listContainer, { bottom: 0 }]}>
       <Animated.View {...panResponder.panHandlers} style={styles.listHeader}>
         <FontAwesome name={icon} color="#fff" size={30} />
       </Animated.View>
-      <View style={styles.listContent}>
+      <Animated.View style={[styles.listContent, { height }]}>
         <FlatList
           showsVerticalScrollIndicator={false}
           data={cardData.data}
           keyExtractor={(item, index) => String(index)}
           renderItem={({ item }) => <Card info={item} />}
         />
-      </View>
-    </Animated.View>
+      </Animated.View>
+    </View>
   );
 }
