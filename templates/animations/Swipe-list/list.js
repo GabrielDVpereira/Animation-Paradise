@@ -27,7 +27,7 @@ export default function List() {
     },
     onPanResponderRelease: (event, gestureState) => {
       const panHorizontalGesture = SCREEN_HEIGHT - gestureState.moveY;
-      if (panHorizontalGesture < 300 && gestureState.dy > 0) {
+      if (panHorizontalGesture < 400 && gestureState.dy > 0) {
         //scroll to close
         setListVisible(false);
         setShouldAnimate(true);
