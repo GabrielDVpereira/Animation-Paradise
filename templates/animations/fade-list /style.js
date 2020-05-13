@@ -3,12 +3,16 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 15,
+    marginHorizontal: 15,
   },
   title: {
     alignSelf: "center",
     fontFamily: "montserrat-medium",
     fontSize: 30,
+    position: "absolute",
+    backgroundColor: "#fff",
+    zIndex: 1,
+    width: "100%",
   },
   button: {
     borderWidth: 1.5,

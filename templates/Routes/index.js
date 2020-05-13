@@ -15,7 +15,9 @@ const AnimationNav = () => (
     screenOptions={{
       headerTitleAlign: "center",
       headerTintColor: "#fff",
-      headerStyle: { backgroundColor: "#38b0de" },
+      headerStyle: {
+        backgroundColor: "#38b0de",
+      },
     }}
   >
     <AnimationListNav.Screen

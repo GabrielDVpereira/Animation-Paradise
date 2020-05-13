@@ -25,7 +25,7 @@ export default function List() {
           styles.title,
           {
             height: dy.interpolate({
-              inputRange: [0, 0, 100],
+              inputRange: [-100, 0, 100],
               outputRange: [0, 0, 50],
               extrapolate: "clamp",
             }),
@@ -36,15 +36,12 @@ export default function List() {
       </Animated.Text>
       <Animated.View>
         <ScrollView
+          canCancelContentTouches={false}
           showsVerticalScrollIndicator={false}
           scrollEnabled={true}
           onScroll={({ nativeEvent }) => {
-            console.log(
-              Math.abs(currentOffset.current - nativeEvent.contentOffset.y)
-            );
-            // dy.setValue(
-            //   Math.abs(currentOffset.current - nativeEvent.contentOffset.y)
-            // );
+            console.log(nativeEvent.contentOffset.y - currentOffset.current);
+            dy.setValue(currentOffset.current - nativeEvent.contentOffset.y);
 
             // if (event.nativeEvent.velocity.y < 0) {
             //   textInputHeight.setValue(-event.nativeEvent.contentOffset.y);
