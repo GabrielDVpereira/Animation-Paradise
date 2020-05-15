@@ -9,8 +9,10 @@ import {
   PanResponder,
   Animated,
   ScrollView,
+  TextInput,
 } from "react-native";
 import styles from "./style";
+import { Feather } from "@expo/vector-icons";
 
 const dy = new Animated.Value(100);
 
@@ -20,44 +22,55 @@ export default function List() {
 
   return (
     <View style={styles.container}>
-      <Animated.Text
-        style={[
-          styles.title,
-          {
-            height: dy.interpolate({
-              inputRange: [-100, 0, 100],
-              outputRange: [0, 0, 50],
-              extrapolate: "clamp",
-            }),
-          },
-        ]}
+      <Animated.View
+        style={{
+          flexDirection: "row",
+          marginTop: 10,
+          height: 50,
+          elevation: 2,
+          borderRadius: 10,
+        }}
       >
-        Animation Paradise!
-      </Animated.Text>
-      <Animated.View>
-        <ScrollView
-          canCancelContentTouches={false}
-          showsVerticalScrollIndicator={false}
-          scrollEnabled={true}
-          onScroll={({ nativeEvent }) => {
-            console.log(nativeEvent.contentOffset.y - currentOffset.current);
-            dy.setValue(currentOffset.current - nativeEvent.contentOffset.y);
-
-            // if (event.nativeEvent.velocity.y < 0) {
-            //   textInputHeight.setValue(-event.nativeEvent.contentOffset.y);
-            // } else {
-            //   textInputHeight.setValue(-event.nativeEvent.contentOffset.y);
-            // }
+        <TextInput
+          placeholder="serch for a dev"
+          style={{
+            backgroundColor: "#f5f5f5",
+            borderTopLeftRadius: 5,
+            borderBottomLeftRadius: 5,
+            flex: 5,
+            paddingHorizontal: 10,
+            fontSize: 20,
           }}
-          onScrollEndDrag={({ nativeEvent }) =>
-            (currentOffset.current = nativeEvent.contentOffset.y)
-          }
+        />
+        <TouchableOpacity
+          style={{
+            backgroundColor: "#0066ff",
+            flex: 1,
+            alignItems: "center",
+            borderTopRightRadius: 5,
+            borderBottomRightRadius: 5,
+            justifyContent: "center",
+          }}
         >
-          {images.map((image) => (
-            <ListItem key={image.text} image={image} />
-          ))}
-        </ScrollView>
+          <Feather name="search" color="#fff" size={22} />
+        </TouchableOpacity>
       </Animated.View>
+      <ScrollView
+        contentContainerStyle={{ zIndex: 1 }}
+        canCancelContentTouches={false}
+        showsVerticalScrollIndicator={false}
+        scrollEnabled={true}
+        onScroll={({ nativeEvent }) => {
+          console.log(nativeEvent.contentOffset.y - currentOffset.current);
+        }}
+        onScrollEndDrag={({ nativeEvent }) =>
+          (currentOffset.current = nativeEvent.contentOffset.y)
+        }
+      >
+        {images.map((image) => (
+          <ListItem key={image.text} image={image} />
+        ))}
+      </ScrollView>
     </View>
   );
 }

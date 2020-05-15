@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
     fontSize: 30,
     position: "absolute",
     backgroundColor: "#fff",
-    zIndex: 1,
     width: "100%",
+    zIndex: 2,
   },
   button: {
     borderWidth: 1.5,
