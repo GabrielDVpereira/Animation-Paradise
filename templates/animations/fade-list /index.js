@@ -12,25 +12,11 @@ import {
 import styles from "./style";
 import { Feather } from "@expo/vector-icons";
 
-const y = new Animated.Value(0);
+const scroll = new Animated.Value(0);
+const y = new Animated.diffClamp(scroll, 0, 80);
 
 export default function List() {
   const images = useRef(imageFactory(10)).current;
-
-  function showSearchBar() {
-    Animated.timing(y, {
-      toValue: 0,
-      duration: 50,
-      useNativeDriver: true,
-    }).start();
-  }
-  function hideSearchBar() {
-    Animated.timing(y, {
-      toValue: -80,
-      duration: 50,
-      useNativeDriver: true,
-    }).start();
-  }
 
   return (
     <>
@@ -40,10 +26,17 @@ export default function List() {
           position: "absolute",
           width: "100%",
           height: 70,
-          zIndex: 5,
+          zIndex: -1,
           paddingTop: 10,
           backgroundColor: "#fff",
-          transform: [{ translateY: y }],
+          transform: [
+            {
+              translateY: y.interpolate({
+                inputRange: [0, 80],
+                outputRange: [0, -80],
+              }),
+            },
+          ],
         }}
       >
         <TextInput
@@ -75,20 +68,31 @@ export default function List() {
           <Feather name="search" color="#fff" size={22} />
         </TouchableOpacity>
       </Animated.View>
-      <View style={styles.container}>
+      <Animated.View
+        style={[
+          styles.container,
+          {
+            transform: [
+              {
+                translateY: y.interpolate({
+                  inputRange: [0, 80],
+                  outputRange: [60, 0],
+                  extrapolate: "clamp",
+                }),
+              },
+            ],
+          },
+        ]}
+      >
         <ScrollView
-          contentContainerStyle={{ zIndex: 1, paddingTop: 60 }}
+          contentContainerStyle={{
+            zIndex: 1,
+          }}
           canCancelContentTouches={false}
           showsVerticalScrollIndicator={false}
           scrollEnabled={true}
           onScroll={({ nativeEvent }) => {
-            console.log(nativeEvent.velocity.y);
-
-            if (nativeEvent.velocity.y < 0) {
-              showSearchBar();
-            } else {
-              hideSearchBar();
-            }
+            scroll.setValue(nativeEvent.contentOffset.y);
           }}
           overScrollMode="never"
         >
@@ -96,7 +100,7 @@ export default function List() {
             <ListItem key={image.text} image={image} />
           ))}
         </ScrollView>
-      </View>
+      </Animated.View>
     </>
   );
 }
