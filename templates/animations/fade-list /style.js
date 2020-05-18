@@ -1,33 +1,41 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  container: {
+  listContainer: {
     flex: 1,
     paddingHorizontal: 15,
     backgroundColor: "#fff",
     zIndex: -2,
   },
-  title: {
-    alignSelf: "center",
-    fontFamily: "montserrat-medium",
-    fontSize: 30,
+  inputContainer: {
+    flexDirection: "row",
     position: "absolute",
-    backgroundColor: "#fff",
     width: "100%",
-    zIndex: 2,
+    height: 70,
+    zIndex: -1,
+    paddingTop: 10,
+    backgroundColor: "#fff",
   },
-  button: {
-    borderWidth: 1.5,
-    borderRadius: 10,
+  textInput: {
+    marginLeft: 15,
+    elevation: 2,
+    backgroundColor: "#f5f5f5",
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
+    flex: 5,
+    paddingHorizontal: 10,
+    fontSize: 20,
+    height: 50,
+  },
+  searchButton: {
+    backgroundColor: "#0066ff",
+    flex: 1,
     alignItems: "center",
-    alignSelf: "center",
-    padding: 10,
-    marginTop: 20,
-    borderColor: "#427afa",
-  },
-  buttonText: {
-    fontFamily: "montserrat-bold",
-    color: "#427afa",
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+    justifyContent: "center",
+    height: 50,
+    marginRight: 15,
   },
 });
 
