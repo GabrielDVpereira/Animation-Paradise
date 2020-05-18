@@ -2,12 +2,7 @@ import React, { useRef } from "react";
 import infoFactory from "../../utils/factory/infoFactory";
 import ListItem from "./ListItem";
 
-import {
-  TouchableOpacity,
-  Animated,
-  ScrollView,
-  TextInput,
-} from "react-native";
+import { TouchableOpacity, Animated, TextInput } from "react-native";
 import styles from "./style";
 import { Feather } from "@expo/vector-icons";
 

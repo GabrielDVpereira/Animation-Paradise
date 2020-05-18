@@ -26,3 +26,8 @@ This is a repository where I'll try to create and save tamplates of useful anima
 
 <img src="gifs/list.gif" alt="gif" width="300">
 
+## hidable input
+
+[code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/hide-input)
+
+<img src="gifs/hide.gif" alt="gif" width="300">
