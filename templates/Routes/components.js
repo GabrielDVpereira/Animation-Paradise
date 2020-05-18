@@ -2,7 +2,7 @@ import ImageBlur from "../animations/image-blur";
 import Modal1 from "../animations/Modal1";
 import Deck from "../animations/deck-swiper";
 import List from "../animations/Swipe-list";
-import FadeList from "../animations/fade-list ";
+import HideInput from "../animations/hide-input";
 const components = [
   {
     name: "Image Blur",
@@ -21,8 +21,8 @@ const components = [
     container: List,
   },
   {
-    name: "Fade List",
-    container: FadeList,
+    name: "Hidable input",
+    container: HideInput,
   },
 ];
 

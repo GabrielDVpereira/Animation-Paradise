@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import imageFactory from "../../utils/factory/imageFactory";
+import React, { useRef } from "react";
+import infoFactory from "../../utils/factory/infoFactory";
 import ListItem from "./ListItem";
 
 import {
@@ -15,7 +15,7 @@ const scroll = new Animated.Value(0);
 const y = new Animated.diffClamp(scroll, 0, 80);
 
 export default function List() {
-  const images = useRef(imageFactory(10)).current;
+  const fakeInformation = useRef(infoFactory(10)).current;
 
   return (
     <>
@@ -34,30 +34,20 @@ export default function List() {
           },
         ]}
       >
-        <TextInput placeholder="serch for a dev" style={styles.textInput} />
+        <TextInput
+          placeholder="serch for a dev"
+          placeholderTextColor="#dbdbdb"
+          style={styles.textInput}
+        />
         <TouchableOpacity style={styles.searchButton}>
-          <Feather name="search" color="#fff" size={22} />
+          <Feather name="search" color="#dbdbdb" size={22} />
         </TouchableOpacity>
       </Animated.View>
-      <Animated.View
-        style={[
-          styles.listContainer,
-          {
-            transform: [
-              {
-                translateY: y.interpolate({
-                  inputRange: [0, 80],
-                  outputRange: [60, 0],
-                  extrapolate: "clamp",
-                }),
-              },
-            ],
-          },
-        ]}
-      >
-        <ScrollView
+      <Animated.View style={styles.listContainer}>
+        <Animated.ScrollView
           contentContainerStyle={{
             zIndex: 1,
+            paddingTop: 70,
           }}
           canCancelContentTouches={false}
           showsVerticalScrollIndicator={false}
@@ -67,10 +57,10 @@ export default function List() {
           }}
           overScrollMode="never"
         >
-          {images.map((image) => (
-            <ListItem key={image.text} image={image} />
+          {fakeInformation.map((info) => (
+            <ListItem key={info.name} info={info} />
           ))}
-        </ScrollView>
+        </Animated.ScrollView>
       </Animated.View>
     </>
   );

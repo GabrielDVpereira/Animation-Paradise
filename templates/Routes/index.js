@@ -17,6 +17,7 @@ const AnimationNav = () => (
       headerTintColor: "#fff",
       headerStyle: {
         backgroundColor: "#38b0de",
+        elevation: 0,
       },
     }}
   >
@@ -27,6 +28,7 @@ const AnimationNav = () => (
     />
     {components.map((component) => (
       <AnimationListNav.Screen
+        key={component.name}
         name={component.name}
         component={component.container}
       />
