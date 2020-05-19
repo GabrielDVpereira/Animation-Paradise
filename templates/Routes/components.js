@@ -3,6 +3,8 @@ import Modal1 from "../animations/Modal1";
 import Deck from "../animations/deck-swiper";
 import List from "../animations/Swipe-list";
 import HideInput from "../animations/hide-input";
+import SwipeImage from "../animations/swipe-image";
+
 const components = [
   {
     name: "Image Blur",
@@ -23,6 +25,10 @@ const components = [
   {
     name: "Hidable input",
     container: HideInput,
+  },
+  {
+    name: "Swipe image v1",
+    container: SwipeImage,
   },
 ];
 

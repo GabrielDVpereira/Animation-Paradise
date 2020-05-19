@@ -7,7 +7,7 @@ import {
   Dimensions,
   PanResponder,
 } from "react-native";
-import images from "./images";
+import images from "../../../assets/images";
 import styles from "./styles";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
