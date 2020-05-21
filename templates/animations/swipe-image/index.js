@@ -8,12 +8,7 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 export default function Swipe() {
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView
-        horizontal
-        decelerationRate="fast"
-        snapToInterval={SCREEN_WIDTH}
-        bounces={false}
-      >
+      <ScrollView pagingEnabled horizontal>
         {images.map((image) => (
           <View
             key={image.id}
