@@ -37,3 +37,9 @@ This is a repository where I'll try to create and save tamplates of useful anima
 [code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/swipe-image)
 
 <img src="gifs/image-swipe.gif" alt="gif" width="300">
+
+## Shimmer effect
+
+[code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/shimmer-effect)
+
+<img src="gifs/shimmerEffect.gif" alt="gif" width="300">
