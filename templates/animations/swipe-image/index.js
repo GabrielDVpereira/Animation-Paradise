@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, ScrollView, Image, Dimensions, Animated } from "react-native";
+import { View, ScrollView, Dimensions, Animated } from "react-native";
 import images from "../../../assets/images";
 import { PinchGestureHandler, State } from "react-native-gesture-handler";
 
@@ -7,6 +7,8 @@ const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
 const imageScale = new Animated.Value(1);
+const progressBar = new Animated.Value(0);
+
 export default function Swipe() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentImageOffset, setCurrentImageOffset] = useState(0);
@@ -27,6 +29,7 @@ export default function Swipe() {
 
   function incrementCurrentImageIndex({ nativeEvent }) {
     const { x: amoutWidthSwiped } = nativeEvent.contentOffset;
+    progressBar.setValue(amoutWidthSwiped);
 
     if (
       (amoutWidthSwiped - currentImageOffset).toFixed(1) ==
@@ -74,6 +77,32 @@ export default function Swipe() {
           </View>
         ))}
       </ScrollView>
+      <View
+        style={{
+          width: SCREEN_WIDTH * 0.8,
+          height: 5,
+          backgroundColor: "rgba(0,0,0,0.8)",
+          position: "absolute",
+          bottom: 10,
+          elevation: 5,
+          borderRadius: 20,
+          alignSelf: "center",
+          zIndex: 1,
+        }}
+      >
+        <Animated.View
+          style={{
+            marginLeft: progressBar.interpolate({
+              inputRange: [0, SCREEN_WIDTH * images.length],
+              outputRange: [0, SCREEN_WIDTH * 0.8],
+            }),
+            width: (SCREEN_WIDTH * 0.8) / images.length,
+            height: 5,
+            backgroundColor: "#fff",
+            borderRadius: 20,
+          }}
+        />
+      </View>
     </View>
   );
 }
