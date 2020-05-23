@@ -8,13 +8,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   animationList: {
-    marginTop: 100,
+    marginVertical: 50,
   },
   animation: {
     padding: 20,
     backgroundColor: "#fff",
     elevation: 10,
     marginBottom: 15,
+    margin: 10,
   },
   animationTitle: {
     fontFamily: "montserrat-bold",

@@ -4,6 +4,7 @@ import Deck from "../animations/deck-swiper";
 import List from "../animations/Swipe-list";
 import HideInput from "../animations/hide-input";
 import SwipeImage from "../animations/swipe-image";
+import ShimmerEffect from "../animations/shimmer-effect";
 
 const components = [
   {
@@ -27,8 +28,12 @@ const components = [
     container: HideInput,
   },
   {
-    name: "Swipe image v1",
+    name: "Swipe image",
     container: SwipeImage,
+  },
+  {
+    name: "Shimmer Effect",
+    container: ShimmerEffect,
   },
 ];
 

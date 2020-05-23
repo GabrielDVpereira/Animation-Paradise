@@ -19,6 +19,7 @@ export default function Main({ navigation }) {
     >
       <View style={styles.animationList}>
         <FlatList
+          numColumns={2}
           data={components}
           keyExtractor={(item) => {
             return item.name;
