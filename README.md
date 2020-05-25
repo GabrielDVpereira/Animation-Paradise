@@ -43,3 +43,9 @@ This is a repository where I'll try to create and save tamplates of useful anima
 [code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/shimmer-effect)
 
 <img src="gifs/shimmerEffect.gif" alt="gif" width="300">
+
+## Hidable header
+
+[code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/airbnb-header)
+
+<img src="gifs/hidebleHeader.gif" alt="gif" width="300">
