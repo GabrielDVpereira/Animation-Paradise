@@ -31,6 +31,7 @@ const AnimationNav = () => (
         key={component.name}
         name={component.name}
         component={component.container}
+        options={component.options}
       />
     ))}
   </AnimationListNav.Navigator>
