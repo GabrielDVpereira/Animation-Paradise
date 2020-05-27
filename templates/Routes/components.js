@@ -6,7 +6,7 @@ import HideInput from "../animations/hide-input";
 import SwipeImage from "../animations/swipe-image";
 import ShimmerEffect from "../animations/shimmer-effect";
 import AirbnbHeader from "../animations/airbnb-header";
-import AnimatedCard from "../animations/animated-cards";
+import Wallet from "../animations/wallet";
 
 const components = [
   {
@@ -45,8 +45,8 @@ const components = [
     },
   },
   {
-    name: "Animated cards",
-    container: AnimatedCard,
+    name: "wallet",
+    container: Wallet,
   },
 ];
 
