@@ -44,9 +44,8 @@ export default function AnimatedCards() {
         />
       )}
       contentContainerStyle={{ alignItems: "center", paddingBottom: 10 }}
-      onScroll={({ nativeEvent }) => {
-        console.log(nativeEvent);
-      }}
+      // onScroll={({ nativeEvent }) => console.log(nativeEvent)}
+      onScroll={onScroll}
       onViewableItemsChanged={viewableItemsChanged}
       viewabilityConfig={{ viewAreaCoveragePercentThreshold: 50 }}
     />
