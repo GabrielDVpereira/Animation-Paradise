@@ -5,17 +5,19 @@ import Card from "./Card";
 
 const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList);
 let y = new Animated.Value(0);
+let velocityY = new Animated.Value(0);
 
 export default function AnimatedCards() {
-  const [viewbleItems, setViewItems] = useState([]);
-  const [viewbleItemsChanged, setViewbleItemsChanged] = useState([]);
-
+  const [viewableItemsIndex, setViewItems] = useState([]);
   const onScroll = Animated.event(
     [
       {
         nativeEvent: {
           contentOffset: {
             y,
+          },
+          velocity: {
+            y: velocityY,
           },
         },
       },
@@ -24,8 +26,8 @@ export default function AnimatedCards() {
   );
 
   const viewableItemsChanged = useCallback(({ viewableItems, changed }) => {
-    setViewItems(viewableItems);
-    setViewbleItemsChanged(changed);
+    const viewableItemsIndex = viewableItems.map((item) => item.index);
+    setViewItems(viewableItemsIndex);
   }, []);
 
   return (
@@ -33,12 +35,20 @@ export default function AnimatedCards() {
       data={cardColors}
       keyExtractor={(color) => color}
       renderItem={({ item: bgColor, index }) => (
-        <Card index={index} bgColor={bgColor} y={y} />
+        <Card
+          index={index}
+          bgColor={bgColor}
+          y={y}
+          visible={viewableItemsIndex.includes(index)}
+          velocityY={velocityY}
+        />
       )}
       contentContainerStyle={{ alignItems: "center", paddingBottom: 10 }}
-      onScroll={onScroll}
+      onScroll={({ nativeEvent }) => {
+        console.log(nativeEvent);
+      }}
       onViewableItemsChanged={viewableItemsChanged}
-      viewabilityConfig={{ viewAreaCoveragePercentThreshold: 30 }}
+      viewabilityConfig={{ viewAreaCoveragePercentThreshold: 50 }}
     />
   );
 }

@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, Animated } from "react-native";
 
-export default function Card({ bgColor, index, y }) {
-  console.log(y);
-  let scale = y.interpolate({
-    inputRange: [0, 200 * 6],
-    outputRange: [1, 0],
-    extrapolate: "clamp",
-  });
+export default function Card({ bgColor, index, y, visible }) {
+  // let scale = y.interpolate({
+  //   inputRange: [0, 1500],
+  //   outputRange: [1, 0],
+  //   extrapolate: "clamp",
+  // });
 
   let translateY = y;
+  // useEffect(() => {
+  //   console.log(visible ? `${index} visible` : `${index} not visible`);
+  // }, [visible]);
 
   return (
     <Animated.View
       style={{
-        transform: [{ scale }, { translateY }],
+        // transform: visible == false ? [{ scale }, { translateY }] : null,
         width: 350,
         height: 200,
         backgroundColor: bgColor,
