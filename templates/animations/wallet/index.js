@@ -8,8 +8,7 @@ let y = new Animated.Value(0);
 let velocityY = new Animated.Value(0);
 
 export default function AnimatedCards() {
-  const [viewableItemsIndex, setViewItems] = useState([]);
-  console.log(viewableItemsIndex);
+  const [viewableItemsChanged, setviewableItemsChanged] = useState([]);
   const onScroll = Animated.event(
     [
       {
@@ -26,9 +25,13 @@ export default function AnimatedCards() {
     { useNativeDriver: true }
   );
 
-  const viewableItemsChanged = useCallback(({ viewableItems, changed }) => {
-    const viewableItemsIndex = viewableItems.map((item) => item.index);
-    setViewItems(viewableItemsIndex);
+  const onViewableItemsChanged = useCallback(({ viewableItems, changed }) => {
+    console.log(changed);
+    const viewableItemsChangedInfo = changed.map((item) => ({
+      index: item.index,
+      isViewable: item.isViewable,
+    }));
+    setviewableItemsChanged(viewableItemsChangedInfo);
   }, []);
 
   return (
@@ -40,15 +43,17 @@ export default function AnimatedCards() {
           index={index}
           bgColor={bgColor}
           y={y}
-          visible={viewableItemsIndex.includes(index)}
           velocityY={velocityY}
+          changed={
+            viewableItemsChanged.filter((item) => item.index == index)[0]
+          }
         />
       )}
       contentContainerStyle={{ alignItems: "center", paddingBottom: 10 }}
       // onScroll={({ nativeEvent }) => console.log(nativeEvent)}
       onScroll={onScroll}
-      onViewableItemsChanged={viewableItemsChanged}
-      viewabilityConfig={{ viewAreaCoveragePercentThreshold: 70 }}
+      onViewableItemsChanged={onViewableItemsChanged}
+      viewabilityConfig={{ viewAreaCoveragePercentThreshold: 100 }}
       showsVerticalScrollIndicator={false}
     />
   );
