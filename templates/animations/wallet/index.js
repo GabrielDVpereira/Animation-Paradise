@@ -9,6 +9,7 @@ let velocityY = new Animated.Value(0);
 
 export default function AnimatedCards() {
   const [viewableItemsIndex, setViewItems] = useState([]);
+  console.log(viewableItemsIndex);
   const onScroll = Animated.event(
     [
       {
@@ -47,7 +48,8 @@ export default function AnimatedCards() {
       // onScroll={({ nativeEvent }) => console.log(nativeEvent)}
       onScroll={onScroll}
       onViewableItemsChanged={viewableItemsChanged}
-      viewabilityConfig={{ viewAreaCoveragePercentThreshold: 50 }}
+      viewabilityConfig={{ viewAreaCoveragePercentThreshold: 70 }}
+      showsVerticalScrollIndicator={false}
     />
   );
 }

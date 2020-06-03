@@ -3,21 +3,15 @@ import { View, Text, Animated } from "react-native";
 
 export default function Card({ bgColor, index, y, visible }) {
   let scale = y.interpolate({
-    inputRange: [210 * index, 210 * index + 210],
+    inputRange: [210 * index, 210 * index + 600],
     outputRange: [1, 0],
     extrapolate: "clamp",
-  });
-
-  let translateY = y.interpolate({
-    inputRange: [0, 210 * index + 210],
-    outputRange: [0, -(210 * index)],
-    extrapolateRight: "clamp",
   });
 
   return (
     <Animated.View
       style={{
-        transform: [{ scale }, { translateY }],
+        transform: [{ scale }],
         width: 350,
         height: 200,
         backgroundColor: bgColor,
