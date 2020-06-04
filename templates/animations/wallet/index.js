@@ -8,7 +8,7 @@ let y = new Animated.Value(0);
 let velocityY = new Animated.Value(0);
 
 export default function AnimatedCards() {
-  const [viewableItemsChanged, setviewableItemsChanged] = useState([]);
+  const [viewableItems, setviewableItems] = useState([]);
   const onScroll = Animated.event(
     [
       {
@@ -26,12 +26,8 @@ export default function AnimatedCards() {
   );
 
   const onViewableItemsChanged = useCallback(({ viewableItems, changed }) => {
-    console.log(changed);
-    const viewableItemsChangedInfo = changed.map((item) => ({
-      index: item.index,
-      isViewable: item.isViewable,
-    }));
-    setviewableItemsChanged(viewableItemsChangedInfo);
+    const viewableItemsEvent = viewableItems.map((item) => item.index );
+    setviewableItems(viewableItemsEvent);
   }, []);
 
   return (
@@ -44,8 +40,8 @@ export default function AnimatedCards() {
           bgColor={bgColor}
           y={y}
           velocityY={velocityY}
-          changed={
-            viewableItemsChanged.filter((item) => item.index == index)[0]
+          visible={
+            viewableItems.includes(index)
           }
         />
       )}
