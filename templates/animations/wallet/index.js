@@ -26,7 +26,7 @@ export default function AnimatedCards() {
   );
 
   const onViewableItemsChanged = useCallback(({ viewableItems, changed }) => {
-    const viewableItemsEvent = viewableItems.map((item) => item.index );
+    const viewableItemsEvent = viewableItems.map((item) => item.index);
     setviewableItems(viewableItemsEvent);
   }, []);
 
@@ -40,9 +40,7 @@ export default function AnimatedCards() {
           bgColor={bgColor}
           y={y}
           velocityY={velocityY}
-          visible={
-            viewableItems.includes(index)
-          }
+          visible={viewableItems.includes(index)}
         />
       )}
       contentContainerStyle={{ alignItems: "center", paddingBottom: 10 }}

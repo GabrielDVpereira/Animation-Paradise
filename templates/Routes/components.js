@@ -7,6 +7,7 @@ import SwipeImage from "../animations/swipe-image";
 import ShimmerEffect from "../animations/shimmer-effect";
 import AirbnbHeader from "../animations/airbnb-header";
 import Wallet from "../animations/wallet";
+import BlurBackground from "../animations/blurBackground";
 
 const components = [
   {
@@ -47,6 +48,10 @@ const components = [
   {
     name: "wallet",
     container: Wallet,
+  },
+  {
+    name: "Blur Background",
+    container: BlurBackground,
   },
 ];
 
