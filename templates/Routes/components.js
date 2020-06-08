@@ -7,7 +7,7 @@ import SwipeImage from "../animations/swipe-image";
 import ShimmerEffect from "../animations/shimmer-effect";
 import AirbnbHeader from "../animations/airbnb-header";
 import Wallet from "../animations/wallet";
-import BlurBackground from "../animations/blurBackground";
+import DragaAndDrop from "../animations/DragAndDrop";
 
 const components = [
   {
@@ -50,8 +50,8 @@ const components = [
     container: Wallet,
   },
   {
-    name: "Blur Background",
-    container: BlurBackground,
+    name: "Simple Drag and drop",
+    container: DragaAndDrop,
   },
 ];
 

@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     elevation: 10,
     marginBottom: 15,
     margin: 10,
+    maxWidth: 180,
   },
   animationTitle: {
     fontFamily: "montserrat-bold",

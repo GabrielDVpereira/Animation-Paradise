@@ -8,23 +8,10 @@ export default function Card({ bgColor, index, y, visible }) {
     extrapolate: "clamp",
   });
 
-  let invertY = y.interpolate({
-    inputRange: [0, 666.7],
-    outputRange: [666.7, 0],
-    extrapolate: "clamp",
-  });
-
-  let scaleUp = invertY.interpolate({
-    inputRange: [133 * index, 210 * index + 600],
-    outputRange: [0, 1],
-    extrapolate: "clamp",
-  });
-
-  
   return (
     <Animated.View
       style={{
-        transform: [{ scale: scaleUp }],
+        transform: [{ scale: scaleDown }],
         width: 350,
         height: 200,
         backgroundColor: bgColor,
