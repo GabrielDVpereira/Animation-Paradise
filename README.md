@@ -49,3 +49,15 @@ This is a repository where I'll try to create and save tamplates of useful anima
 [code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/airbnb-header)
 
 <img src="gifs/hidebleHeader.gif" alt="gif" width="300">
+
+## Simple drag and drop
+
+[code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/DragAndDrop)
+
+<img src="gifs/dragAndDrop.gif" alt="gif" width="300">
+
+## Wallet
+
+[code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/wallet)
+
+<img src="gifs/wallet.gif" alt="gif" width="300">
