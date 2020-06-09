@@ -71,7 +71,7 @@ export default function ModalBlur() {
             fontFamily: "montserrat-medium",
           }}
         >
-          {isDragging ? "Drop me!" : "Drag me!"}
+          {isDragging ? "Drop me!" : "Drag me"}
         </Text>
       </Animated.View>
     </PanGestureHandler>
