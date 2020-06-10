@@ -8,6 +8,7 @@ import ShimmerEffect from "../animations/shimmer-effect";
 import AirbnbHeader from "../animations/airbnb-header";
 import Wallet from "../animations/wallet";
 import DragaAndDrop from "../animations/DragAndDrop";
+import GoNative from "../animations/GoNative";
 
 const components = [
   {
@@ -52,6 +53,13 @@ const components = [
   {
     name: "Simple Drag and drop",
     container: DragaAndDrop,
+  },
+  {
+    name: "GoNative",
+    container: GoNative,
+    options: {
+      headerShown: false,
+    },
   },
 ];
 
