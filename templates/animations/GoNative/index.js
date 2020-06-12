@@ -3,63 +3,31 @@ import {
   View,
   Text,
   ScrollView,
-  Image,
-  TouchableWithoutFeedback,
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
 import list from "./list";
 import Card from "./card";
+import styles from "./styles";
 
 export default function GoNative() {
   const [selectedCard, setSelectedCard] = useState(null);
   console.log(selectedCard);
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       {selectedCard ? (
-        <View style={{ width: "100%", height: "30%" }}>
+        <View style={styles.headerImageContainer}>
           <ImageBackground
             resizeMode="cover"
             source={selectedCard.image}
-            style={{
-              width: "100%",
-              height: "100%",
-              backgroundColor: "#38b0de",
-              justifyContent: "flex-end",
-            }}
+            style={styles.headerImage}
           >
-            <Text
-              style={{
-                fontFamily: "montserrat-bold",
-                fontSize: 26,
-                margin: 20,
-                color: "#fff",
-              }}
-            >
-              {selectedCard.name}
-            </Text>
+            <Text style={styles.headerTitle}>{selectedCard.name}</Text>
           </ImageBackground>
         </View>
       ) : (
-        <View
-          style={{
-            width: "100%",
-            height: "30%",
-            marginTop: 0,
-            backgroundColor: "#38b0de",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Text
-            style={{
-              fontFamily: "montserrat-bold",
-              fontSize: 26,
-              margin: 20,
-              color: "#fff",
-            }}
-          >
-            GoNative
-          </Text>
+        <View style={styles.headerNoImage}>
+          <Text style={styles.headerTitle}>GoNative</Text>
         </View>
       )}
 
