@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   View,
   Text,
@@ -11,12 +11,12 @@ import list from "./list";
 import Card from "./card";
 import styles from "./styles";
 
-const scrollOffset = new Animated.Value(0);
-const aimateHeader = new Animated.diffClamp(scrollOffset, 0, 200);
-
 export default function GoNative() {
   const offset = new Animated.ValueXY({ x: 0, y: 50 });
   const opacity = new Animated.Value(0);
+  const scrollOffset = new Animated.Value(0);
+  const aimateHeader = useRef(new Animated.diffClamp(scrollOffset, 0, 200))
+    .current;
 
   const [selectedCard, setSelectedCard] = useState(null);
 
