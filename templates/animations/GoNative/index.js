@@ -6,10 +6,12 @@ import {
   ImageBackground,
   TouchableOpacity,
   Animated,
+  Dimensions,
 } from "react-native";
 import list from "./list";
 import Card from "./card";
 import styles from "./styles";
+const { width: ScreenWidth } = Dimensions.get("window");
 
 export default function GoNative() {
   const offset = new Animated.ValueXY({ x: 0, y: 50 });
@@ -17,8 +19,27 @@ export default function GoNative() {
   const scrollOffset = new Animated.Value(0);
   const aimateHeader = useRef(new Animated.diffClamp(scrollOffset, 0, 200))
     .current;
+  const listProgress = useRef(new Animated.Value(0)).current;
+  const cardInfoProgress = useRef(new Animated.Value(0)).current;
 
   const [selectedCard, setSelectedCard] = useState(null);
+  const [cardVisible, setCardVisible] = useState(false);
+
+  function selectCard(card) {
+    setSelectedCard(card);
+    Animated.parallel([
+      Animated.timing(listProgress, {
+        toValue: 100,
+        duration: 300,
+      }),
+      Animated.timing(cardInfoProgress, {
+        toValue: 100,
+        duration: 500,
+      }),
+    ]).start(() => {
+      setCardVisible(true);
+    });
+  }
 
   useEffect(() => {
     Animated.parallel([
@@ -32,7 +53,7 @@ export default function GoNative() {
         duration: 500,
       }),
     ]).start();
-  }, [selectedCard]);
+  }, [cardVisible]);
   return (
     <>
       {selectedCard ? (
@@ -109,7 +130,7 @@ export default function GoNative() {
       <Animated.View
         style={{ transform: [...offset.getTranslateTransform()], opacity }}
       >
-        {selectedCard ? (
+        {cardVisible ? (
           <Animated.View
             style={{
               marginTop: aimateHeader.interpolate({
@@ -121,27 +142,40 @@ export default function GoNative() {
             <Card card={selectedCard} />
           </Animated.View>
         ) : (
-          <ScrollView
-            scrollEventThrottle={16}
-            onScroll={Animated.event([
-              {
-                nativeEvent: {
-                  contentOffset: { y: scrollOffset },
+          <Animated.View
+            style={{
+              transform: [
+                {
+                  translateX: listProgress.interpolate({
+                    inputRange: [0, 100],
+                    outputRange: [0, ScreenWidth],
+                  }),
                 },
-              },
-            ])}
-            contentContainerStyle={{ marginTop: 220, zIndex: 1 }}
+              ],
+            }}
           >
-            {list.map((card) => (
-              <TouchableOpacity
-                key={card.name}
-                onPress={() => setSelectedCard(card)}
-                activeOpacity={1}
-              >
-                <Card card={card} />
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
+            <ScrollView
+              scrollEventThrottle={16}
+              onScroll={Animated.event([
+                {
+                  nativeEvent: {
+                    contentOffset: { y: scrollOffset },
+                  },
+                },
+              ])}
+              contentContainerStyle={{ marginTop: 220, zIndex: 1 }}
+            >
+              {list.map((card) => (
+                <TouchableOpacity
+                  key={card.name}
+                  onPress={() => selectCard(card)}
+                  activeOpacity={1}
+                >
+                  <Card card={card} />
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </Animated.View>
         )}
       </Animated.View>
     </>
