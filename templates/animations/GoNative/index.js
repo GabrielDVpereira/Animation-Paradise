@@ -25,19 +25,23 @@ export default function GoNative() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [cardVisible, setCardVisible] = useState(false);
 
+  const AnimatedImageBackground = Animated.createAnimatedComponent(
+    ImageBackground
+  );
+
   function selectCard(card) {
-    setSelectedCard(card);
-    Animated.parallel([
-      Animated.timing(listProgress, {
-        toValue: 100,
-        duration: 300,
-      }),
-      Animated.timing(cardInfoProgress, {
-        toValue: 100,
-        duration: 500,
-      }),
-    ]).start(() => {
+    Animated.timing(listProgress, {
+      toValue: 100,
+      duration: 300,
+    }).start(() => {
       setCardVisible(true);
+    });
+
+    Animated.timing(cardInfoProgress, {
+      toValue: 100,
+      duration: 600,
+    }).start(() => {
+      setSelectedCard(card);
     });
   }
 
@@ -45,8 +49,7 @@ export default function GoNative() {
     Animated.parallel([
       Animated.spring(offset.y, {
         toValue: 0,
-        speed: 5,
-        bounciness: 20,
+        bounciness: 10,
       }),
       Animated.timing(opacity, {
         toValue: 1,
@@ -56,59 +59,35 @@ export default function GoNative() {
   }, [cardVisible]);
   return (
     <>
-      {selectedCard ? (
-        <Animated.View
+      <Animated.View
+        style={[
+          {
+            transform: [
+              {
+                translateY: aimateHeader.interpolate({
+                  inputRange: [0, 150],
+                  outputRange: [0, -130],
+                  extrapolate: "clamp",
+                }),
+              },
+            ],
+          },
+          styles.headerImageContainer,
+        ]}
+      >
+        <AnimatedImageBackground
+          resizeMode="cover"
+          source={cardVisible ? selectedCard.image : null}
           style={[
+            styles.headerImage,
             {
-              transform: [
-                {
-                  translateY: aimateHeader.interpolate({
-                    inputRange: [0, 150],
-                    outputRange: [0, -130],
-                    extrapolate: "clamp",
-                  }),
-                },
-              ],
+              opacity: cardVisible
+                ? cardInfoProgress.interpolate({
+                    inputRange: [0, 100],
+                    outputRange: [0, 1],
+                  })
+                : 1,
             },
-            styles.headerImageContainer,
-          ]}
-        >
-          <ImageBackground
-            resizeMode="cover"
-            source={selectedCard.image}
-            style={styles.headerImage}
-          >
-            <Animated.Text
-              style={[
-                {
-                  fontSize: aimateHeader.interpolate({
-                    inputRange: [0, 150],
-                    outputRange: [26, 20],
-                    extrapolate: "clamp",
-                  }),
-                },
-                styles.headerTitle,
-              ]}
-            >
-              {selectedCard.name}
-            </Animated.Text>
-          </ImageBackground>
-        </Animated.View>
-      ) : (
-        <Animated.View
-          style={[
-            {
-              transform: [
-                {
-                  translateY: aimateHeader.interpolate({
-                    inputRange: [0, 150],
-                    outputRange: [0, -130],
-                    extrapolate: "clamp",
-                  }),
-                },
-              ],
-            },
-            styles.headerNoImage,
           ]}
         >
           <Animated.Text
@@ -123,10 +102,11 @@ export default function GoNative() {
               styles.headerTitle,
             ]}
           >
-            GoNative
+            {cardVisible ? selectedCard.name : "Go Native"}
           </Animated.Text>
-        </Animated.View>
-      )}
+        </AnimatedImageBackground>
+      </Animated.View>
+
       <Animated.View
         style={{ transform: [...offset.getTranslateTransform()], opacity }}
       >

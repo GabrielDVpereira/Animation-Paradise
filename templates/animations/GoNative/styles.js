@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
   headerImageContainer: {
     width: "100%",
     height: "30%",
+    marginTop: 0,
+    backgroundColor: "#38b0de",
+    justifyContent: "flex-end",
     position: "absolute",
     zIndex: 2,
   },
