@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  Animated,
-  TouchableOpacity,
-  Dimensions,
-} from "react-native";
+import { Text, Animated, TouchableOpacity, Dimensions } from "react-native";
 import {
   MaterialCommunityIcons,
   MaterialIcons,
@@ -39,7 +33,6 @@ export default function Button() {
           opacity: animationProgress,
           position: "absolute",
           zIndex: 1,
-          width: "100%",
           marginTop: 120,
           width: screen_width * 0.9,
           alignSelf: "center",
