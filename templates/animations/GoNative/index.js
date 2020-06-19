@@ -30,6 +30,8 @@ export default function GoNative() {
   );
 
   function selectCard(card) {
+    setSelectedCard(card);
+
     Animated.timing(listProgress, {
       toValue: 100,
       duration: 300,
@@ -40,9 +42,7 @@ export default function GoNative() {
     Animated.timing(cardInfoProgress, {
       toValue: 100,
       duration: 600,
-    }).start(() => {
-      setSelectedCard(card);
-    });
+    }).start();
   }
 
   useEffect(() => {
