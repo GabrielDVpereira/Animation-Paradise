@@ -9,6 +9,7 @@ import AirbnbHeader from "../animations/airbnb-header";
 import Wallet from "../animations/wallet";
 import DragaAndDrop from "../animations/DragAndDrop";
 import GoNative from "../animations/GoNative";
+import Button from '../animations/buttonAnimation01'
 
 const components = [
   {
@@ -60,6 +61,11 @@ const components = [
     options: {
       headerShown: false,
     },
+  },
+  {
+    name: "Button 01",
+    container: Button,
+    
   },
 ];
 
