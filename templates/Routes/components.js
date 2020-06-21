@@ -4,12 +4,13 @@ import Deck from "../animations/deck-swiper";
 import List from "../animations/Swipe-list";
 import HideInput from "../animations/hide-input";
 import SwipeImage from "../animations/swipe-image";
+import SwipeImage2 from "../animations/swipe-image-02";
 import ShimmerEffect from "../animations/shimmer-effect";
 import AirbnbHeader from "../animations/airbnb-header";
 import Wallet from "../animations/wallet";
 import DragaAndDrop from "../animations/DragAndDrop";
 import GoNative from "../animations/GoNative";
-import Button from '../animations/buttonAnimation01'
+import Button from "../animations/buttonAnimation01";
 
 const components = [
   {
@@ -65,7 +66,10 @@ const components = [
   {
     name: "Button 01",
     container: Button,
-    
+  },
+  {
+    name: "Swipe image 02",
+    container: SwipeImage2,
   },
 ];
 

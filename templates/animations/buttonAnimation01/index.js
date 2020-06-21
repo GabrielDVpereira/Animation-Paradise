@@ -5,8 +5,9 @@ import {
   MaterialIcons,
   Feather,
 } from "@expo/vector-icons";
-
 const screen_width = Dimensions.get("window").width;
+
+import styles from "./styles";
 
 const animationProgress = new Animated.Value(0);
 export default function Button() {
@@ -29,15 +30,12 @@ export default function Button() {
   return (
     <>
       <Animated.View
-        style={{
-          opacity: animationProgress,
-          position: "absolute",
-          zIndex: 1,
-          marginTop: 120,
-          width: screen_width * 0.9,
-          alignSelf: "center",
-          alignItems: "center",
-        }}
+        style={[
+          {
+            opacity: animationProgress,
+          },
+          styles.bellIcon,
+        ]}
       >
         <MaterialCommunityIcons
           name="bell-circle-outline"
@@ -47,28 +45,21 @@ export default function Button() {
       </Animated.View>
 
       <Animated.View
-        style={{
-          marginTop: 120,
-          flexDirection: "row",
-          justifyContent: "space-between",
-          width: animationProgress.interpolate({
-            inputRange: [0, 1],
-            outputRange: [screen_width * 0.75, screen_width * 0.9],
-          }),
-          alignSelf: "center",
-          zIndex: 2,
-        }}
+        style={[
+          {
+            width: animationProgress.interpolate({
+              inputRange: [0, 1],
+              outputRange: [screen_width * 0.75, screen_width * 0.9],
+            }),
+          },
+          styles.container,
+        ]}
       >
         <TouchableOpacity
-          style={{
-            flexDirection: "row",
-            padding: 5,
-            width: 150,
-            backgroundColor: iconVisible ? "#ccc" : "#38b0de",
-            justifyContent: "center",
-            borderRadius: 20,
-            alignItems: "center",
-          }}
+          style={[
+            styles.followButton,
+            { backgroundColor: iconVisible ? "#ccc" : "#38b0de" },
+          ]}
           onPress={() => setIconVisible(!iconVisible)}
         >
           <Feather
@@ -76,23 +67,12 @@ export default function Button() {
             size={20}
             color="#fff"
           />
-          <Text style={{ color: "#fff", marginLeft: 3 }}>Seguir</Text>
+          <Text style={styles.followButtonText}>Seguir</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={{
-            borderWidth: 1,
-            flexDirection: "row",
-            padding: 5,
-            width: 150,
-            borderRadius: 20,
-            borderColor: "#38b0de",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <TouchableOpacity style={styles.talkButton}>
           <MaterialIcons name="chat" size={24} color="#38b0de" />
-          <Text style={{ color: "#38b0de", marginLeft: 5 }}>Conversar</Text>
+          <Text style={styles.talkButtonText}>Conversar</Text>
         </TouchableOpacity>
       </Animated.View>
     </>
