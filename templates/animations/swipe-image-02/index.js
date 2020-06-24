@@ -31,6 +31,7 @@ export default function SwipeImage2() {
         }),
       };
     }
+
     //call a fuction to make a spring animation to the imageScaleOnPinch before its returned
     return {
       scale: interpolate(offsetx, {
@@ -42,6 +43,19 @@ export default function SwipeImage2() {
         outputRange: [0.9, 1, 0.9],
       }),
     };
+  }
+
+  function scaleBack() {
+    console.log("scaleBack");
+    Animated.spring(imageScaleOnPinch, {
+      toValue: 1,
+      damping: 15,
+      mass: 1,
+      stiffness: 150,
+      overshootClamping: false,
+      restSpeedThreshold: 0.001,
+      restDisplacementThreshold: 0.001,
+    }).start();
   }
 
   function getImageOpacity(index) {
@@ -60,7 +74,8 @@ export default function SwipeImage2() {
   function handleStateChanged({ nativeEvent }) {
     if (nativeEvent.state == State.ACTIVE) {
       setPinchActive(true);
-    } else {
+    } else if (nativeEvent.oldState == State.ACTIVE) {
+      scaleBack();
       setPinchActive(false);
     }
   }
