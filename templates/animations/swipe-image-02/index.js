@@ -18,7 +18,7 @@ export default function SwipeImage2() {
 
   useCode(() => {
     return call([offsetx], (offsetx) => {
-      setCurrentImageIndex(Math.ceil(offsetx[0] / imageWidth));
+      setCurrentImageIndex((offsetx[0] / imageWidth).toFixed(0));
     });
   }, [offsetx]);
 
@@ -32,7 +32,6 @@ export default function SwipeImage2() {
       };
     }
 
-    //call a fuction to make a spring animation to the imageScaleOnPinch before its returned
     return {
       scale: interpolate(offsetx, {
         inputRange: [
@@ -46,21 +45,20 @@ export default function SwipeImage2() {
   }
 
   function scaleBack() {
-    console.log("scaleBack");
-    Animated.spring(imageScaleOnPinch, {
-      toValue: 1,
-      damping: 15,
-      mass: 1,
-      stiffness: 150,
-      overshootClamping: false,
-      restSpeedThreshold: 0.001,
-      restDisplacementThreshold: 0.001,
-    }).start();
+    return new Promise((resolve, reject) => {
+      Animated.spring(imageScaleOnPinch, {
+        toValue: 1,
+        damping: 15,
+        mass: 1,
+        stiffness: 200,
+        overshootClamping: false,
+        restSpeedThreshold: 0.001,
+        restDisplacementThreshold: 0.001,
+      }).start(() => resolve());
+    });
   }
 
   function getImageOpacity(index) {
-    if (pinchActive && currentImageIndex !== index) return 0; //Apply an timing to bring opacity to 0
-
     return interpolate(offsetx, {
       inputRange: [
         multiply(sub(index, 1), imageWidth),
@@ -71,11 +69,13 @@ export default function SwipeImage2() {
     });
   }
 
-  function handleStateChanged({ nativeEvent }) {
+  async function handleStateChanged({ nativeEvent }) {
     if (nativeEvent.state == State.ACTIVE) {
       setPinchActive(true);
-    } else if (nativeEvent.oldState == State.ACTIVE) {
-      scaleBack();
+    } else if (nativeEvent.oldState == State.UNDETERMINED) {
+      setPinchActive(false);
+    } else if (nativeEvent.state == State.END) {
+      await scaleBack();
       setPinchActive(false);
     }
   }
@@ -118,6 +118,7 @@ export default function SwipeImage2() {
               borderRadius: 20,
               transform: [getImageTransformation(index)],
               opacity: getImageOpacity(index),
+              elevation: index == currentImageIndex ? 2 : 1,
             }}
           />
         </PinchGestureHandler>
