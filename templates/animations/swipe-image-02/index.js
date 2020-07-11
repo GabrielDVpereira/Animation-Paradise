@@ -107,6 +107,7 @@ export default function SwipeImage2() {
             { nativeEvent: { scale: imageScaleOnPinch } },
           ])}
           onHandlerStateChange={handleStateChanged}
+          key={index}
         >
           <Animated.Image
             source={image.uri}

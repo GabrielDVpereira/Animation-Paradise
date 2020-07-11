@@ -11,6 +11,7 @@ import Wallet from "../animations/wallet";
 import DragaAndDrop from "../animations/DragAndDrop";
 import GoNative from "../animations/GoNative";
 import Button from "../animations/buttonAnimation01";
+import Toggle from "../animations/Toggle";
 
 const components = [
   {
@@ -70,6 +71,10 @@ const components = [
   {
     name: "Swipe image 02",
     container: SwipeImage2,
+  },
+  {
+    name: "Toggle",
+    container: Toggle,
   },
 ];
 
