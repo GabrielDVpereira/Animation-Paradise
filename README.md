@@ -61,3 +61,21 @@ This is a repository where I'll try to create and save tamplates of useful anima
 [code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/wallet)
 
 <img src="gifs/wallet.gif" alt="gif" width="300">
+
+## Image-swipe 2
+
+[code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/swipe-image-02)
+
+<img src="gifs/image-swipe2.gif" alt="gif" width="300">
+
+## button
+
+[code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/buttonAnimation01)
+
+<img src="gifs/button.gif" alt="gif" width="300">
+
+## Toggle
+
+[code](https://github.com/GabrielDVpereira/Animation-Paradise/tree/master/templates/animations/Toggle)
+
+<img src="gifs/toggle.gif" alt="gif" width="300">
