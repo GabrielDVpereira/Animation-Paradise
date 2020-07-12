@@ -49,7 +49,7 @@ export default function Button() {
           {
             width: animationProgress.interpolate({
               inputRange: [0, 1],
-              outputRange: [screen_width * 0.8, screen_width * 0.9],
+              outputRange: [310, 350],
             }),
           },
           styles.container,
