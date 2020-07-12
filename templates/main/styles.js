@@ -11,12 +11,14 @@ const styles = StyleSheet.create({
     marginVertical: 50,
   },
   animation: {
-    padding: 20,
+    padding: 10,
+    paddingHorizontal: 15,
     backgroundColor: "#fff",
     elevation: 10,
-    marginBottom: 15,
     margin: 10,
-    maxWidth: 180,
+    width: 150,
+    height: 100,
+    justifyContent: "space-between",
   },
   animationTitle: {
     fontFamily: "montserrat-bold",
