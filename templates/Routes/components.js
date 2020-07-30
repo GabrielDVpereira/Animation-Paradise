@@ -12,6 +12,7 @@ import DragaAndDrop from "../animations/DragAndDrop";
 import GoNative from "../animations/GoNative";
 import Button from "../animations/buttonAnimation01";
 import Toggle from "../animations/Toggle";
+import ToggleForm from "../animations/toggleForm";
 
 const components = [
   {
@@ -75,6 +76,10 @@ const components = [
   {
     name: "Toggle",
     container: Toggle,
+  },
+  {
+    name: "Toggle Form",
+    container: ToggleForm,
   },
 ];
 
