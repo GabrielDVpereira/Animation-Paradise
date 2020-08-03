@@ -13,6 +13,7 @@ import GoNative from "../animations/GoNative";
 import Button from "../animations/buttonAnimation01";
 import Toggle from "../animations/Toggle";
 import ToggleForm from "../animations/toggleForm";
+import SideButton from "../animations/side-button";
 
 const components = [
   {
@@ -80,6 +81,10 @@ const components = [
   {
     name: "Toggle Form",
     container: ToggleForm,
+  },
+  {
+    name: "Side Button ",
+    container: SideButton,
   },
 ];
 
