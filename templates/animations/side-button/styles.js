@@ -8,13 +8,14 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: "#1219bf",
+    backgroundColor: "#28d7eb",
     position: "absolute",
     bottom: 70,
     right: 20,
     alignItems: "center",
     justifyContent: "center",
     zIndex: 3,
+    elevation: 2,
   },
   hiddenButtonView: {
     position: "absolute",
@@ -30,6 +31,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "#2edad1",
     marginLeft: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
   hiddenButton2: {
     width: 35,
@@ -37,6 +40,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "#ff4500",
     marginLeft: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

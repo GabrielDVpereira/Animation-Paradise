@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, FontAwesome, Entypo } from "@expo/vector-icons";
 import Animated, { Easing, timing } from "react-native-reanimated";
 
 import styles from "./styles";
@@ -79,8 +79,10 @@ function Button() {
           styles.hiddenButtonView,
         ]}
       >
-        {buttonTextVisible && <Text>Test</Text>}
-        <TouchableOpacity style={styles.hiddenButton1} />
+        {buttonTextVisible && <Text>FAQ</Text>}
+        <TouchableOpacity style={styles.hiddenButton1}>
+          <FontAwesome name="question" size={24} color="#fff" />
+        </TouchableOpacity>
       </Animated.View>
       <Animated.View
         style={[
@@ -97,8 +99,10 @@ function Button() {
           styles.hiddenButtonView,
         ]}
       >
-        {buttonTextVisible && <Text>Test</Text>}
-        <TouchableOpacity style={styles.hiddenButton2} />
+        {buttonTextVisible && <Text>Play</Text>}
+        <TouchableOpacity style={styles.hiddenButton2}>
+          <Entypo name="controller-play" size={24} color="#fff" />
+        </TouchableOpacity>
       </Animated.View>
     </View>
   );
