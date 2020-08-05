@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 import Animated, { Easing, timing } from "react-native-reanimated";
 
 import styles from "./styles";
@@ -51,7 +52,7 @@ function Button() {
               {
                 rotate: translateY.interpolate({
                   inputRange: [0, 100],
-                  outputRange: [0, 1.5],
+                  outputRange: [0, 0.8],
                 }),
               },
             ],
@@ -59,8 +60,9 @@ function Button() {
           styles.button,
         ]}
         onPress={toggleButtons}
+        activeOpacity={1}
       >
-        <Text style={{ color: "#fff" }}>X</Text>
+        <AntDesign name="plus" size={24} color="#fff" />
       </ButtonAnimated>
       <Animated.View
         style={[
@@ -80,7 +82,7 @@ function Button() {
         {buttonTextVisible && <Text>Test</Text>}
         <TouchableOpacity style={styles.hiddenButton1} />
       </Animated.View>
-      <ButtonAnimated
+      <Animated.View
         style={[
           {
             transform: [
@@ -97,7 +99,7 @@ function Button() {
       >
         {buttonTextVisible && <Text>Test</Text>}
         <TouchableOpacity style={styles.hiddenButton2} />
-      </ButtonAnimated>
+      </Animated.View>
     </View>
   );
 }
