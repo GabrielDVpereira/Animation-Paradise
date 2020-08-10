@@ -14,6 +14,7 @@ import Button from "../animations/buttonAnimation01";
 import Toggle from "../animations/Toggle";
 import ToggleForm from "../animations/toggleForm";
 import SideButton from "../animations/side-button";
+import PressController from "../animations/Press-controller";
 
 const components = [
   {
@@ -85,6 +86,10 @@ const components = [
   {
     name: "Side Button ",
     container: SideButton,
+  },
+  {
+    name: "Press Control ",
+    container: PressController,
   },
 ];
 
