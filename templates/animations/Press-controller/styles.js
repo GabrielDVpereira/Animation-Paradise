@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     elevation: 3,
+    zIndex: 2,
   },
   animationText: {
     fontFamily: "montserrat-medium",
