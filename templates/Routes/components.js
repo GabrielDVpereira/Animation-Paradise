@@ -15,6 +15,7 @@ import Toggle from "../animations/Toggle";
 import ToggleForm from "../animations/toggleForm";
 import SideButton from "../animations/side-button";
 import PressController from "../animations/Press-controller";
+import ProgressIndicator from "../animations/progress-indicator";
 
 const components = [
   {
@@ -90,6 +91,10 @@ const components = [
   {
     name: "Press Control ",
     container: PressController,
+  },
+  {
+    name: "Progress indicator",
+    container: ProgressIndicator,
   },
 ];
 
