@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { View, StyleSheet, Animated, Easing } from "react-native";
-const { interpolate, timing, parallel } = Animated;
+const { timing, parallel } = Animated;
 
 // import { Container } from './styles';
 
 const RADIUS = 150;
 const PERCENT = 100;
-const DURATION = 500;
+const DURATION = 1000;
 
 const initialValueHalfCircle = PERCENT >= 50 ? 0 : 180;
 const initialValueInnerCircle = 0;
@@ -77,7 +77,7 @@ const progressIndicator = () => {
         },
         otherStyles,
       ]}
-    ></Animated.View>
+    />
   );
 
   const rotate1 = firstCircleAnimatedValue.interpolate({

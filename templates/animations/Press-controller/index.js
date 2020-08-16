@@ -9,6 +9,7 @@ import Animated, {
   useCode,
   call,
 } from "react-native-reanimated";
+import Progress from "./progressBar";
 
 const animatedValue = new Animated.Value(300);
 
@@ -67,7 +68,7 @@ const PressController = () => {
 
   return (
     <View style={styles.container}>
-      <PanGestureHandler onHandlerStateChange={onGestureChange}>
+      {/* <PanGestureHandler onHandlerStateChange={onGestureChange}>
         <Animated.View
           style={[
             styles.pressButton,
@@ -80,7 +81,8 @@ const PressController = () => {
         >
           <Text style={styles.animationText}>{progress}</Text>
         </Animated.View>
-      </PanGestureHandler>
+      </PanGestureHandler> */}
+      <Progress />
     </View>
   );
 };
