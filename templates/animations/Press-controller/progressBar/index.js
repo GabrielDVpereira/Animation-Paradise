@@ -1,5 +1,5 @@
 import React from "react";
-import Animated from "react-native-reanimated";
+import Animated, { timing, interpolate } from "react-native-reanimated";
 import { View, StyleSheet } from "react-native";
 
 const CIRCLE_RADIUS = 150;
@@ -11,13 +11,34 @@ export default function Progress() {
       <View style={styles.outerCircle} />
       <View
         style={{
-          width: CIRCLE_RADIUS * 2,
+          width: CIRCLE_RADIUS,
           height: CIRCLE_RADIUS * 2,
+          borderRadius: CIRCLE_RADIUS,
           backgroundColor: "rgb(20,242,224)",
           position: "absolute",
-          left: CIRCLE_RADIUS,
-          // right: CIRCLE_RADIUS,
-          transform: [{ rotate: "45deg" }],
+          left: 0,
+          top: 0,
+          transform: [
+            { rotate: "45deg" },
+            { translateX: -22 },
+            { translateY: -53 },
+          ],
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
+        }}
+      />
+      <View
+        style={{
+          width: CIRCLE_RADIUS,
+          height: CIRCLE_RADIUS * 2,
+          borderRadius: CIRCLE_RADIUS,
+          backgroundColor: "red",
+          position: "absolute",
+          left: 0,
+          top: 0,
+
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
         }}
       />
     </View>
