@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { View, Text, Animated, Dimensions, Easing } from "react-native";
 
+const SCREEN_WIDTH = Dimensions.get("window").width;
+
 export default function Card({ item, index }) {
-  const opacity = new Animated.Value(0);
+  const translateX = new Animated.Value(-SCREEN_WIDTH);
 
   const sleep = (time) => {
     return new Promise((resolve) => setTimeout(() => resolve(), time));
@@ -10,8 +12,8 @@ export default function Card({ item, index }) {
 
   useEffect(() => {
     sleep(50 * index).then(() => {
-      Animated.timing(opacity, {
-        duration: 500,
+      Animated.timing(translateX, {
+        duration: 300,
         toValue: 1,
         easing: Easing.ease,
         useNativeDriver: true,
@@ -28,7 +30,7 @@ export default function Card({ item, index }) {
         elevation: 2,
         borderRadius: 5,
         position: "relative",
-        opacity: opacity,
+        transform: [{ translateX }],
       }}
     >
       <View

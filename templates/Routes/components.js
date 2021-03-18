@@ -17,6 +17,7 @@ import SideButton from "../animations/side-button";
 import PressController from "../animations/Press-controller";
 import ProgressIndicator from "../animations/progress-indicator";
 import ListApperance from "../animations/listApperance";
+import ListApperance2 from "../animations/listApperance2";
 
 const components = [
   {
@@ -100,6 +101,10 @@ const components = [
   {
     name: "List Apperance",
     container: ListApperance,
+  },
+  {
+    name: "List Apperance 2",
+    container: ListApperance2,
   },
 ];
 
