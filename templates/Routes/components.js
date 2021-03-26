@@ -19,6 +19,7 @@ import ProgressIndicator from "../animations/progress-indicator";
 import ListApperance from "../animations/listApperance";
 import ListApperance2 from "../animations/listApperance2";
 import ListApperance3 from "../animations/listApperance3";
+import ZaraAnimation from "../animations/ZaraAnimation";
 
 const components = [
   {
@@ -110,6 +111,13 @@ const components = [
   {
     name: "List Apperance 3",
     container: ListApperance3,
+  },
+  {
+    name: "Zara animation",
+    container: ZaraAnimation,
+    options: {
+      headerShown: false,
+    },
   },
 ];
 
