@@ -15,7 +15,7 @@ export default function Card({ item, index }) {
       Animated.timing(translateX, {
         duration: 300,
         toValue: 1,
-        easing: Easing.ease,
+        easing: Easing.quad,
         useNativeDriver: true,
       }).start();
     });

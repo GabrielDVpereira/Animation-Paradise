@@ -20,6 +20,7 @@ import ListApperance from "../animations/listApperance";
 import ListApperance2 from "../animations/listApperance2";
 import ListApperance3 from "../animations/listApperance3";
 import ZaraAnimation from "../animations/ZaraAnimation";
+import TransitionAnimation from "../animations/TransitionAnimation";
 
 const components = [
   {
@@ -115,6 +116,13 @@ const components = [
   {
     name: "Zara animation",
     container: ZaraAnimation,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: "Transition animation",
+    container: TransitionAnimation,
     options: {
       headerShown: false,
     },
