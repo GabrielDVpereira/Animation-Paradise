@@ -1,4 +1,4 @@
-export default [
+export const DATA = [
   {
     type: "Humlan P",
     imageUri: require("./images/urbanears_blue.png"),

@@ -21,6 +21,7 @@ import ListApperance2 from "../animations/listApperance2";
 import ListApperance3 from "../animations/listApperance3";
 import ZaraAnimation from "../animations/ZaraAnimation";
 import TransitionAnimation from "../animations/TransitionAnimation";
+import StackCarousel from "../animations/stackCarousel";
 
 const components = [
   {
@@ -123,6 +124,13 @@ const components = [
   {
     name: "Transition animation",
     container: TransitionAnimation,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: "Stack Carousel",
+    container: StackCarousel,
     options: {
       headerShown: false,
     },
