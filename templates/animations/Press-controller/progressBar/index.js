@@ -1,5 +1,5 @@
 import React from "react";
-import Animated, { timing, interpolate } from "react-native-reanimated";
+import Animated, { timing, interpolateNode } from "react-native-reanimated";
 import { View, StyleSheet } from "react-native";
 
 const CIRCLE_RADIUS = 150;

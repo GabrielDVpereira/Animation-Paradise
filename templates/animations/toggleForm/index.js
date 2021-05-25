@@ -50,7 +50,7 @@ const Form = () => {
         {
           transform: [
             {
-              translateX: translateFormX.interpolate({
+              translateX: translateFormX.interpolateNode({
                 inputRange: [0, screen_width],
                 outputRange: [0, -screen_width],
               }),
@@ -80,7 +80,7 @@ const Form = () => {
         {
           transform: [
             {
-              translateX: translateFormX.interpolate({
+              translateX: translateFormX.interpolateNode({
                 inputRange: [0, screen_width],
                 outputRange: [screen_width, 0],
               }),

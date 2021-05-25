@@ -8,7 +8,7 @@ const { width: screen_width, height: screen_height } = Dimensions.get("window");
 const imagePadding = 50;
 const imageWidth = screen_width - imagePadding * 2;
 
-const { add, multiply, sub, interpolate, useCode, call } = Animated;
+const { add, multiply, sub, interpolateNode, useCode, call } = Animated;
 
 export default function SwipeImage2() {
   const offsetx = useRef(new Animated.Value(0)).current;
@@ -25,7 +25,7 @@ export default function SwipeImage2() {
   function getImageTransformation(index) {
     if (pinchActive && currentImageIndex == index) {
       return {
-        scale: interpolate(imageScaleOnPinch, {
+        scale: interpolateNode(imageScaleOnPinch, {
           inputRange: [0, 1, 2],
           outputRange: [1, 1, 1.5],
         }),
@@ -33,7 +33,7 @@ export default function SwipeImage2() {
     }
 
     return {
-      scale: interpolate(offsetx, {
+      scale: interpolateNode(offsetx, {
         inputRange: [
           multiply(sub(index, 1), imageWidth),
           multiply(index, imageWidth),
@@ -59,7 +59,7 @@ export default function SwipeImage2() {
   }
 
   function getImageOpacity(index) {
-    return interpolate(offsetx, {
+    return interpolateNode(offsetx, {
       inputRange: [
         multiply(sub(index, 1), imageWidth),
         multiply(index, imageWidth),

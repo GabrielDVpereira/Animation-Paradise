@@ -5,7 +5,7 @@ import { PanGestureHandler, State } from "react-native-gesture-handler";
 import Animated, {
   Easing,
   timing,
-  interpolate,
+  interpolateNode,
   useCode,
   call,
 } from "react-native-reanimated";
@@ -36,20 +36,20 @@ const PressController = () => {
     easing: Easing.inOut(Easing.ease),
   });
 
-  const interporlateR = interpolate(animatedValue, {
+  const interporlateR = interpolateNode(animatedValue, {
     inputRange: [250, 300],
     outputRange: [20, 65],
   });
-  const interporlateG = interpolate(animatedValue, {
+  const interporlateG = interpolateNode(animatedValue, {
     inputRange: [250, 300],
     outputRange: [242, 200],
   });
-  const interporlateB = interpolate(animatedValue, {
+  const interporlateB = interpolateNode(animatedValue, {
     inputRange: [250, 300],
     outputRange: [224, 229],
   });
 
-  const animationProgress = interpolate(animatedValue, {
+  const animationProgress = interpolateNode(animatedValue, {
     inputRange: [250, 300],
     outputRange: [100, 0],
   });
