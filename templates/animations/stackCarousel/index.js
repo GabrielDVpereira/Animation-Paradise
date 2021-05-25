@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   overflowContainer: {
-    eight: OVERFLOW_HEIGHT,
+    height: OVERFLOW_HEIGHT,
     overflow: "hidden",
   },
 });
