@@ -22,6 +22,7 @@ import ListApperance3 from "../animations/listApperance3";
 import ZaraAnimation from "../animations/ZaraAnimation";
 import TransitionAnimation from "../animations/TransitionAnimation";
 import StackCarousel from "../animations/stackCarousel";
+import ContactList from "../animations/contact-list";
 
 const components = [
   {
@@ -131,6 +132,13 @@ const components = [
   {
     name: "Stack Carousel",
     container: StackCarousel,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: "Contact List",
+    container: ContactList,
     options: {
       headerShown: false,
     },
