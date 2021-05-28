@@ -23,6 +23,7 @@ import ZaraAnimation from "../animations/ZaraAnimation";
 import TransitionAnimation from "../animations/TransitionAnimation";
 import StackCarousel from "../animations/stackCarousel";
 import ContactList from "../animations/contact-list";
+import TransitionAnimation2 from "../animations/TransitionAnimation2";
 
 const components = [
   {
@@ -125,6 +126,13 @@ const components = [
   {
     name: "Transition animation",
     container: TransitionAnimation,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: "Transition animation 2",
+    container: TransitionAnimation2,
     options: {
       headerShown: false,
     },
