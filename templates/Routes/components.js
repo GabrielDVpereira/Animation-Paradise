@@ -24,6 +24,8 @@ import TransitionAnimation from "../animations/TransitionAnimation";
 import StackCarousel from "../animations/stackCarousel";
 import ContactList from "../animations/contact-list";
 import TransitionAnimation2 from "../animations/TransitionAnimation2";
+import Carousel from "../animations/Carousel";
+
 
 const components = [
   {
@@ -147,6 +149,13 @@ const components = [
   {
     name: "Contact List",
     container: ContactList,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: "Carousel",
+    container: Carousel,
     options: {
       headerShown: false,
     },

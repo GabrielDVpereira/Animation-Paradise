@@ -128,7 +128,7 @@ export default function StackCarousel() {
                 {zIndex: data.length - index}
               ]
               return(
-                <View style={newStyle} index={index} {...props}>
+                <View style={newStyle} key={index} {...props}>
                   {children}
                 </View>
               )
