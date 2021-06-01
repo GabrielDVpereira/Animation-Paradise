@@ -12,12 +12,10 @@ const styles = StyleSheet.create({
   },
   animation: {
     padding: 10,
+    marginLeft: 10,
     paddingHorizontal: 15,
     backgroundColor: "#fff",
     elevation: 10,
-    margin: 10,
-    width: 150,
-    height: 100,
     justifyContent: "space-between",
   },
   animationTitle: {
