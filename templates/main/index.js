@@ -26,7 +26,6 @@ const CARD_SPACE = CARD_HEIGHT + CARD_MARGIN
 
 export default function Main({ navigation }) {
   const scrollY = useRef(new Animated.Value(0)).current;
-  scrollY.addListener(({value})  => console.log(value))
 
   return (
     <ImageBackground
