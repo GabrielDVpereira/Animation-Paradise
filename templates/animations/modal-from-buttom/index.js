@@ -10,13 +10,6 @@ if (Platform.OS === 'android') {
 export default function ModalFromButton() {
     const [modalVisible, setModalVisible] = useState(false); 
 
-    const renderModal = () => {
-        return(
-            <View style={modalVisible ? styles.modalVisible : styles.modalNotVisible}>
-                <TouchableOpacity style={modalVisible ? styles.modalContentVisible : styles.modalContentNotVisible} onPress={toggleModal}/>
-            </View>
-        )
-    }
 
     const toggleModal = () => {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
@@ -24,34 +17,32 @@ export default function ModalFromButton() {
     }
     return (
         <View style={{width: '100%', flex: 1}}>
-            <TouchableOpacity onPress={toggleModal}>
-                <Text>Modal from button</Text>
+            <TouchableOpacity onPress={toggleModal} style={modalVisible? styles.buttonActive: styles.buttonNotActive}>
+               {modalVisible ? <Text style={{color: "#fff", fontSize: 30}}>Modal content</Text> :  <Text style={{color: "#fff"}}>Modal from button</Text>}
             </TouchableOpacity>
-            {renderModal()}
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    modalNotVisible: {
-        ...StyleSheet.absoluteFill,
-        backgroundColor: 'rgba(0,0,0,0)',
-        zIndex: -1, 
+    buttonNotActive:{ 
+        padding: 10, 
+        backgroundColor: 
+        '#6e6eeb', 
+        width: 150, 
+        marginTop: 40, 
+        borderRadius: 5,
+        alignSelf: 'center'
     }, 
-    modalVisible: {
-        ...StyleSheet.absoluteFill,
-        alignItems: 'center', 
-        backgroundColor: 'rgba(0,0,0,0.5)'
-    }, 
-    modalContentVisible: {
-        top: 100,
-        backgroundColor: '#fff',
-        width: 300, 
-        height: 300,
-        borderRadius: 10
-    },
-    modalContentNotVisible: {
-        width: 0, 
-        height: 0,
+    buttonActive: {
+        borderRadius: 10,
+        backgroundColor: "#41c8e5", 
+        width: 250,
+        height: 200, 
+        alignSelf: 'center', 
+        marginTop: 100, 
+        justifyContent: 'center', 
+        alignItems: 'center'
     }
+    
 })
