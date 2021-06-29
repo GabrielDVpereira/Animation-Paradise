@@ -1,5 +1,6 @@
 import React, { useRef, useState, useCallback } from 'react';
 import { View, TouchableOpacity, Text, Dimensions, StyleSheet, SafeAreaView, Animated, FlatList } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const { height: HEIGHT } = Dimensions.get('screen')
 const PAGES = ['red', 'blue', 'yellow'];
@@ -69,7 +70,7 @@ export default function OnBoarding() {
             />
 
             <TouchableOpacity style={styles.transitionButton} onPress={transitionContent}>
-                <Text>Next</Text>
+                <MaterialIcons name="keyboard-arrow-down" size={24} color="black" />
             </TouchableOpacity>
         </SafeAreaView>
     )
