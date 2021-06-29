@@ -26,7 +26,9 @@ import ContactList from "../animations/contact-list";
 import TransitionAnimation2 from "../animations/TransitionAnimation2";
 import Carousel from "../animations/Carousel";
 import Carousel2 from "../animations/Carousel2";
-import ModalFromButton from '../animations/modal-from-buttom'; 
+import ModalFromButton from '../animations/modal-from-buttom';
+import OnBoarding from '../animations/onBoarding';
+
 
 
 const components = [
@@ -169,6 +171,13 @@ const components = [
   {
     name: "Carousel 2",
     container: Carousel2,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: "On Boarding",
+    container: OnBoarding,
     options: {
       headerShown: false,
     },
