@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   View,
   Text,
@@ -14,18 +14,18 @@ import { Feather } from "@expo/vector-icons";
 const headerHeight = 90;
 
 export default function Header({ navigation }) {
-  const scrollY = new Animated.Value(0);
-  const headerAnimation = Animated.diffClamp(scrollY, 0, headerHeight);
+  const scrollY = useRef(new Animated.Value(0)).current;
+  const headerAnimation = useRef(Animated.diffClamp(scrollY, 0, headerHeight)).current;
 
-  const scrollEvent = Animated.event([
-    {
-      nativeEvent: {
-        contentOffset: {
-          y: scrollY,
-        },
-      },
-    },
-  ]);
+  // const scrollEvent = Animated.event([
+  //   {
+  //     nativeEvent: {
+  //       contentOffset: {
+  //         y: scrollY,
+  //       },
+  //     },
+  //   },
+  // ], { useNativeDriver: true });
   return (
     <>
       <Animated.View
@@ -53,15 +53,24 @@ export default function Header({ navigation }) {
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Hidable Header</Text>
       </Animated.View>
-      <ScrollView
+      <Animated.ScrollView
+        bounces={false}
         contentContainerStyle={styles.imageContainer}
         showsVerticalScrollIndicator={false}
-        onScroll={scrollEvent}
+        onScroll={Animated.event([
+          {
+            nativeEvent: {
+              contentOffset: {
+                y: scrollY
+              }
+            }
+          }
+        ], { useNativeDriver: true })}
       >
         {images.map((image) => (
           <Image key={image.id} source={image.url} style={styles.image} />
         ))}
-      </ScrollView>
+      </Animated.ScrollView>
     </>
   );
 }

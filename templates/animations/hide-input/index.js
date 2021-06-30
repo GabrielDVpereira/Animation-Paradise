@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { View } from 'react-native'
 import infoFactory from "../../utils/factory/infoFactory";
 import ListItem from "./ListItem";
 
@@ -6,11 +7,12 @@ import { TouchableOpacity, Animated, TextInput } from "react-native";
 import styles from "./style";
 import { Feather } from "@expo/vector-icons";
 
-const scroll = new Animated.Value(0);
-const y = new Animated.diffClamp(scroll, 0, 80);
+
 
 export default function List() {
   const fakeInformation = useRef(infoFactory(10)).current;
+  const scroll = useRef(new Animated.Value(0)).current;
+  const y = useRef(new Animated.diffClamp(scroll, 0, 80)).current;
 
   return (
     <>
@@ -38,25 +40,29 @@ export default function List() {
           <Feather name="search" color="#dbdbdb" size={22} />
         </TouchableOpacity>
       </Animated.View>
-      <Animated.View style={styles.listContainer}>
+      <View style={styles.listContainer}>
         <Animated.ScrollView
           contentContainerStyle={{
             zIndex: 1,
             paddingTop: 70,
           }}
-          canCancelContentTouches={false}
+          bounces={false}
           showsVerticalScrollIndicator={false}
           scrollEnabled={true}
-          onScroll={({ nativeEvent }) => {
-            scroll.setValue(nativeEvent.contentOffset.y);
-          }}
+          onScroll={Animated.event([{
+            nativeEvent: {
+              contentOffset: {
+                y: scroll
+              }
+            }
+          }], { useNativeDriver: true })}
           overScrollMode="never"
         >
           {fakeInformation.map((info) => (
             <ListItem key={info.name} info={info} />
           ))}
         </Animated.ScrollView>
-      </Animated.View>
+      </View>
     </>
   );
 }

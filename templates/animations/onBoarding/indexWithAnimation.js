@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { View, TouchableOpacity, Text, Dimensions, StyleSheet, SafeAreaView, Animated } from 'react-native';
 import { Easing } from 'react-native-reanimated';
+import { MaterialIcons } from '@expo/vector-icons';
+
 
 const { height: HEIGHT } = Dimensions.get('screen')
 const PAGES = ['red', 'blue', 'yellow'];
@@ -49,7 +51,7 @@ export default function OnBoarding() {
             </View>
 
             <TouchableOpacity style={styles.transitionButton} onPress={transitionContent}>
-                <Text>Transition content</Text>
+                <MaterialIcons name="keyboard-arrow-down" size={24} color="black" />
             </TouchableOpacity>
         </SafeAreaView>
     )

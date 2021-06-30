@@ -32,6 +32,7 @@ export default function OnBoarding() {
                 }
             </View>
             <Animated.FlatList
+                bounces={false}
                 onScroll={Animated.event([
                     {
                         nativeEvent: {
@@ -70,7 +71,7 @@ export default function OnBoarding() {
             />
 
             <TouchableOpacity style={styles.transitionButton} onPress={transitionContent}>
-                <MaterialIcons name="keyboard-arrow-down" size={40} color="black" />
+                <MaterialIcons name="keyboard-arrow-down" size={24} color="black" />
             </TouchableOpacity>
         </SafeAreaView>
     )
