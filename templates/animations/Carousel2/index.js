@@ -3,15 +3,11 @@ import { StyleSheet, View, Text, FlatList, Dimensions, Image, Animated } from 'r
 import { getMovies } from './api'
 import Genres from './genres'
 import Rating from './rating'
-import MaskedView from '@react-native-community/masked-view';
-import Svg, { Rect } from 'react-native-svg';
-import { LinearGradient } from 'expo-linear-gradient'
 
 const { width, height } = Dimensions.get('screen');
 const SPACING = 10;
 const ITEM_SIZE = width * 0.72;
 const SPACER_ITEM_SIZE = (width - ITEM_SIZE) / 2;
-const BACKDROP_HEIGHT = height * 0.6;
 
 const Loading = () => (
   <View style={styles.loadingContainer}>

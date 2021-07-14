@@ -28,6 +28,7 @@ import Carousel from "../animations/Carousel";
 import Carousel2 from "../animations/Carousel2";
 import ModalFromButton from '../animations/modal-from-buttom';
 import OnBoarding from '../animations/onBoarding';
+import Parallax from '../animations/parallax-carousel';
 
 
 
@@ -178,6 +179,13 @@ const components = [
   {
     name: "On Boarding",
     container: OnBoarding,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: "Parallax",
+    container: Parallax,
     options: {
       headerShown: false,
     },

@@ -16,6 +16,7 @@
     "@use-expo/font": "^2.0.0",
     "expo": "^41.0.0",
     "expo-linear-gradient": "^9.1.0",
+    "expo-status-bar": "~1.0.4",
     "faker": "^4.1.0",
     "lottie-react-native": "3.5.0",
     "react": "16.13.1",
