@@ -29,6 +29,7 @@ import Carousel2 from "../animations/Carousel2";
 import ModalFromButton from '../animations/modal-from-buttom';
 import OnBoarding from '../animations/onBoarding';
 import Parallax from '../animations/parallax-carousel';
+import StickyFooter from '../animations/sticky-footer'
 
 
 
@@ -186,6 +187,13 @@ const components = [
   {
     name: "Parallax",
     container: Parallax,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: "Sticky Footer",
+    container: StickyFooter,
     options: {
       headerShown: false,
     },
