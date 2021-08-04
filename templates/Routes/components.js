@@ -30,7 +30,7 @@ import ModalFromButton from '../animations/modal-from-buttom';
 import OnBoarding from '../animations/onBoarding';
 import Parallax from '../animations/parallax-carousel';
 import StickyFooter from '../animations/sticky-footer'
-
+import Carrousel3D from '../animations/carrousel-3d'
 
 
 const components = [
@@ -194,6 +194,13 @@ const components = [
   {
     name: "Sticky Footer",
     container: StickyFooter,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: "Carrousel 3D",
+    container: Carrousel3D,
     options: {
       headerShown: false,
     },
